@@ -3,29 +3,88 @@
 
 #abstract location class
 class Location:
-    def __init__(self,name,color,char,buildings):
+    def __init__(self,name,color,symbol,buildings,x_coord,y_coord):
 
-        #string
+        #strings
         self.name = name
         self.color = color
-
-        #one character string
-        self.char = char
+        #string for sprite
+        self.symbol = symbol
 
         #buildings array
         self.buildings = buildings
 
-
-class Town(Location):
-    def __init__(self,name,color,char,buildings,culture,race):
-        super().__init__(name,color,char,buildings)
-        self.culture = culture
-        self.race = race
+        #int
+        self.x_coord = x_coord
+        self.y_coord = y_coord
 
     def print_name(self):
         print(self.name)
 
+    def name_change(new_name):
+        name = new_name
 
+
+    def destroy(self):
+        self.name = self.name + " Ruins"
+        self.symbol = "Ruins"
+
+class Town(Location):
+    def __init__(self,name,color,symbol,buildings,x_coord,y_coord,culture,race,civ,pop):
+        super().__init__(name,color,symbol,buildings,x_coord,y_coord)
+
+        #other
+        self.culture = culture
+        self.race = race
+        self.civ = civ
+
+        # string
+        self.symbol = symbol
+
+        #int
+        self.pop = pop
+        self.x_coord = x_coord
+        self.y_coord = y_coord
+
+        if (pop == 1):
+            self.caste_pops = {"Peasants": 1}
+            self.caste_race = {"Peasants": race}
+        else:
+            self.caste_pops = {"Nobles": 1, "Peasants": (pop - 1)}
+            self.caste_race = {"Nobles": race, "Peasants": race}
+
+
+
+
+    def pop_change(self,new_pop=1):
+        self.pop += new_pop
+
+    def return_pop(self):
+        pop_sum = 0
+        for pop in self.caste_pops.values():
+            pop_sum = pop_sum + pop
+
+        return pop_sum
+
+    def add_caste(self, caste_name, new_caste_race, new_caste_pop = 1):
+        self.caste_pops[caste_name] = new_caste_pop + self.caste_pops[caste_name]
+        self.caste_race[caste_name] = new_caste_race
+
+    def change_caste(self, caste_name, old_caste, new_caste_pop = 1):
+
+        if self.caste_pop[old_caste] < new_caste_pop:
+            new_caste_pop = self.caste_pop[old_caste]
+
+        self.caste_pops[caste_name] = new_caste_pop
+        self.caste_pops[old_caste] = self.caste_pops[old_caste] - new_caste_pop
+
+    def destroy(self):
+        self.name = self.name + " Ruins"
+        self.pop = 0
+        self.caste_pops = {}
+        self.caste_race = {}
+        self.symbol = "City Ruins"
+        self.buildings = []
 
 class Civ:
 

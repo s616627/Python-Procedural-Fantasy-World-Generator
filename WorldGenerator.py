@@ -53,7 +53,7 @@ class World:
         self.fantasy_races = self.createRaces()
         self.gods = self.createGods()
 
-        nothing = Civ.Location("---","BLACK","..",[])
+        nothing = Civ.Location("---","BLACK","..",[],-1,-1)
 
         self.location_map = [[nothing for x in range(width)] for y in range(height)]
 
@@ -101,9 +101,6 @@ class World:
 
         self.createGods()
 
-        self.assign_regions()
-
-
     def printElevation(self):
         self.printNumberArray(self.elevation_map)
 
@@ -124,8 +121,6 @@ class World:
             for x in row:
                 print(x.name, end=",")
             print("")
-
-
 
 
     def smoothNumberArray(self,map):
@@ -149,7 +144,6 @@ class World:
                     avg_elev = round((map[y_coord][self.width-1] + map[y_coord][0]) / 2)
                     map[y_coord][self.width-1] = avg_elev
                     map[y_coord][0] = avg_elev
-
 
     def printNumberArray(self,map):
         for row in map:
@@ -362,7 +356,6 @@ class World:
 
         return final_world_races
 
-
     def settleRaces(self):
 
         roman_city_names = readFromFile("nameFiles/romanCities.txt")
@@ -405,12 +398,12 @@ class World:
 
 
             city_name = city_name_generator.New()
-            new_city =  Civ.Town(city_name,colors[color_counter],"[C]",[],[],race)
+            new_city =  Civ.Town(city_name,colors[color_counter],"[C]",[],x,y,[],race,city_name,5)
             self.location_map[y][x] = new_city
 
             self.city_names_list.append(new_city.name)
 
-
+            """
             if y != 0 :
                 self.location_map[y-1][x] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y-1][x]], [], [], race)
                 if x != 0:
@@ -444,6 +437,8 @@ class World:
                 self.location_map[y][x+1] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y][x+1]], [], [], race)
             else:
                 self.location_map[y][0] = Civ.Town(city_name + " Outskirts", colors[color_counter],self.region_dict[self.biome_map[y - 1][x - 1]], [],[], race)
+
+                """
 
             color_counter = color_counter+1
 
@@ -480,7 +475,7 @@ class World:
 
         return gods
 
-
+    """
     def assign_regions(self) -> None:
 
         region_count = 1
@@ -523,17 +518,5 @@ class World:
                 if y != self.height-1:
                     if self.biome_map[y+1][x] is current_biome and self.region_names[y][x] != 0:
                         self.region_names[y+1][x] = self.region_names[y][x]
-
-
-
-                
-
-
-
-
-
-
-
-
-
+    """
 
