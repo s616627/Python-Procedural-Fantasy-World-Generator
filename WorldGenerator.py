@@ -403,43 +403,6 @@ class World:
 
             self.city_names_list.append(new_city.name)
 
-            """
-            if y != 0 :
-                self.location_map[y-1][x] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y-1][x]], [], [], race)
-                if x != 0:
-                    self.location_map[y-1][x - 1] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y-1][x-1]], [], [], race)
-                else:
-                    self.location_map[y - 1][self.width - 1] = Civ.Town(city_name + " Outskirts", colors[color_counter],self.region_dict[self.biome_map[y - 1][x - 1]], [], [],race)
-
-                if x != self.width-1:
-                    self.location_map[y-1][x + 1] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y-1][x+1]], [], [], race)
-                else:
-                    self.location_map[y - 1][0] = Civ.Town(city_name + " Outskirts", colors[color_counter],self.region_dict[self.biome_map[y - 1][x - 1]], [], [],race)
-
-            if y != self.height-1 :
-                self.location_map[y+1][x] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y+1][x]], [], [], race)
-                if x != 0:
-                    self.location_map[y+1][x - 1] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y+1][x-1]], [], [], race)
-                else:
-                    self.location_map[y+1][self.width - 1] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y+1][self.width-1]], [], [], race)
-
-                if x != self.width-1:
-                    self.location_map[y+1][x + 1] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y+1][x+1]], [], [], race)
-                else:
-                    self.location_map[y + 1][0] = Civ.Town(city_name + " Outskirts", colors[color_counter],self.region_dict[self.biome_map[y + 1][0]], [],[], race)
-
-            if x != 0 :
-                self.location_map[y][x-1] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y][x-1]], [], [], race)
-            else:
-                self.location_map[y][self.width - 1] = Civ.Town(city_name + " Outskirts", colors[color_counter],self.region_dict[self.biome_map[y - 1][x - 1]], [], [],race)
-
-            if x != self.width-1 :
-                self.location_map[y][x+1] = Civ.Town(city_name + " Outskirts", colors[color_counter], self.region_dict[self.biome_map[y][x+1]], [], [], race)
-            else:
-                self.location_map[y][0] = Civ.Town(city_name + " Outskirts", colors[color_counter],self.region_dict[self.biome_map[y - 1][x - 1]], [],[], race)
-
-                """
-
             color_counter = color_counter+1
 
     def createGods(self):
@@ -475,48 +438,4 @@ class World:
 
         return gods
 
-    """
-    def assign_regions(self) -> None:
-
-        region_count = 1
-
-
-        for y in range(self.height):
-            for x in range(self.width):
-                current_biome = self.biome_map[y][x]
-
-
-
-                if x != self.width-1:
-                    if self.biome_map[y][x+1] is current_biome:
-                        self.region_names[y][x] = self.region_names[y][x+1]
-
-                if y != self.height-1:
-                    if self.biome_map[y+1][x] is current_biome and self.region_names[y][x] != 0:
-                        self.region_names[y+1][x] = self.region_names[y][x]
-
-
-                if self.region_names[y][x] == 0:
-
-                    if x != 0:
-                        last_biome = self.biome_map[y][x-1]
-                    else:
-                        last_biome = ""
-
-                    if last_biome is current_biome:
-                        self.region_names[y][x] = region_count
-
-                    else:
-                        region_count = region_count+1
-                        self.region_names[y][x] = region_count
-
-
-                if y>0:
-                    if self.biome_map[y-1][x] is current_biome and self.region_names[y][x] != 0:
-                        self.region_names[y-1][x] = self.region_names[y][x]
-
-                if y != self.height-1:
-                    if self.biome_map[y+1][x] is current_biome and self.region_names[y][x] != 0:
-                        self.region_names[y+1][x] = self.region_names[y][x]
-    """
-
+   
