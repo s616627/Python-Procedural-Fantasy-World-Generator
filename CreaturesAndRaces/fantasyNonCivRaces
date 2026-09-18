@@ -1,0 +1,20 @@
+#Male,Female,Plural,Adjetive,Attack,Defense,Speed,Size,MagicAttack,MagicDefense,HP,Attributes
+Golem,Golem,Golems,Golem,100,100,0,100,30,30,100,
+Centaur,Centaur,Centaurs,Centaur,70,70,100,70,0,0,70,
+Cyclops,Cyclops,Cyclopses,Cyclops,200,200,50,200,0,0,200
+Gnome,Gnome,Gnomes,Gnomish,20,20,20,10,10,10,20
+Merman,Mermaid,Merfolk,Merfolk,50,50,10,50,20,20,50,
+Saytr,Satyr,Saytrs,Satyr,40,40,60,25,20,20,25
+Ogre,Ogress,Ogres,Ogre,200,200,50,200,0,0,200
+Giant,Giantess,Giants,Giant(the race not the adjetive),300,300,50,300,0,0,300
+Kobold,Kobold,Kobolds,Kobold,20,20,20,10,10,10,20
+Troll,Troll,Trolls,Troll,60,60,60,60,60,60,60,
+Naga,Naga,Nagas,Naga,60,60,40,50,60,60,50,
+Kappa,Kappa,Kappas,Kappa,40,40,60,25,00,00,25
+Tengu,Tengu,Tengus,Tengu,40,40,60,25,20,20,25
+Fairy,Fairy,Fairies,Fairy,20,20,100,10,200,200,20
+Treant,Treant,Treants,Treant,200,200,10,200,100,100,200
+Dryad,Dryad,Dryads,Dryad,20,20,100,10,200,200,20
+Nymph,Nymph,Nymphs,Nymph,20,20,100,10,200,200,20
+Djinn,Djinn,Djinn,Djinn,20,20,100,10,200,200,20
+Minotaur,Minotaur,Minotaurs,Minotaur,200,200,50,200,0,0,200

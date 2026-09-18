@@ -1,0 +1,4 @@
+#Name,Male,Female,Baby,Plural,Attack,Defense,Speed,Size,MagicAttack,MagicDefense,HP,Attributes
+Rabbit,Buck,Doe,Bunny,Rabbits,20,20,50,20,0,0,20,
+Hare,Buck,Doe,Bunny,Rabbits,20,20,50,20,0,0,20,
+

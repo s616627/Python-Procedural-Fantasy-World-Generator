@@ -1,0 +1,31 @@
+Weak-Willed
+Strong-Willed
+Groomed
+Heroic
+Sneaky
+Evil
+Greedy
+Loyal
+Feral
+Sad
+Petty
+Battle-Hardy
+Clumsy
+Narcissistic
+Now Good
+Now Evil
+Naive
+Smart
+Xenophobic
+Xenophilic
+Inarticulate
+Artistic
+Musical
+Nihilistic
+Joyous
+Sarcastic
+Religious
+Goofy
+Angry
+Anxious
+Calculated

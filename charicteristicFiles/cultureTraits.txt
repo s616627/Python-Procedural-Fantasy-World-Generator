@@ -1,0 +1,17 @@
+Egalitarian
+Technologically-Advanced
+Democratic,Authoritarian
+Matriarchal
+Sea-Faring
+Nomadic,Mining
+Warmongering,Pacifist
+Artistic
+Religious,Demophile
+Xenophobic,Xenophilic
+Nature-Loving
+Capitalistic
+Orderly
+Weak-Willed,Strong-Willed
+Narcissistic
+Cerebral
+Untrusting

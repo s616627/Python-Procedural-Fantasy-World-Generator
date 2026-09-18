@@ -1,0 +1,82 @@
+mecca
+medina
+damascus
+baghdad
+najran
+kufah
+basra
+anjar
+fustat
+yamama
+muscat
+mansura
+mosul
+bayt ras
+suhar
+taif
+hama
+tabuk
+sana'a
+shihr
+samarra
+raqqa
+beirut
+riyadh
+palmyra
+aden
+aleppo
+hattin
+damietta
+homs
+jeddah
+halab
+al bab
+suez
+aqaba
+ta'izz
+al kunfudhah
+zabid
+bilbeis
+al karak
+ayla
+irbid
+abu dhabi
+yanbu
+khaybar
+tayma
+ad dawhah
+quairouan
+al manamah
+rafah
+al kuwayt
+al ta'if
+al hofuf
+kufah
+izki
+fez
+aydhab
+tripoli
+tunis
+kairouan
+algiers
+oran
+tangier
+casablanca
+marrakech
+cordoba
+mahdia
+rabat
+cairo
+tlemcen
+gabes
+ghadames
+benghazi
+derna
+misrata
+sirte
+sfax
+annaba
+setif
+oujda
+touggort
+tobruk
