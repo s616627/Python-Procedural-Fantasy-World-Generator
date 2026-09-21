@@ -70,13 +70,29 @@ class Town(Location):
         self.caste_pops[caste_name] = new_caste_pop + self.caste_pops[caste_name]
         self.caste_race[caste_name] = new_caste_race
 
-    def change_caste(self, caste_name, old_caste, new_caste_pop = 1):
 
-        if self.caste_pop[old_caste] < new_caste_pop:
-            new_caste_pop = self.caste_pop[old_caste]
+    def remove_caste(self, caste_name, new_caste_pop = 1):
 
-        self.caste_pops[caste_name] = new_caste_pop
-        self.caste_pops[old_caste] = self.caste_pops[old_caste] - new_caste_pop
+        new_caste_population = new_caste_pop
+
+        if self.caste_pops[caste_name] < new_caste_population:
+            new_caste_population = self.caste_pops[caste_name]
+
+        if self.caste_pops[caste_name] != 0:
+            self.caste_pops[caste_name] =  self.caste_pops[caste_name] - new_caste_population
+
+    def change_caste(self, new_caste, new_caste_race, old_caste, new_caste_pop = 1):
+
+        new_caste_population = new_caste_pop
+
+        if self.caste_pops[old_caste] < new_caste_population:
+            new_caste_population = self.caste_pops[old_caste]
+
+        if self.caste_pops[old_caste] != 0:
+            self.add_caste(new_caste,new_caste_race,new_caste_population)
+            self.caste_pops[old_caste] = self.caste_pops[old_caste] - new_caste_population
+
+
 
     def destroy(self):
         self.name = self.name + " Ruins"
