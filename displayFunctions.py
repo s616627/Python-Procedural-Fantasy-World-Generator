@@ -35,7 +35,7 @@ def display_map(world):
     capitol_imp = pygame.image.load('worldTiles\\capitol.png').convert_alpha()
     artic_capitol_imp = pygame.image.load('worldTiles\\artic_capitol.png').convert_alpha()
 
-    tile_width = int((4 / 1920) * screen_width)
+    tile_width = int((4.5 / 1920) * screen_width)
 
     artic_small_imp = pygame.transform.scale(artic_imp, (tile_width, tile_width))
     artic_mountain_small_imp = pygame.transform.scale(artic_mountain_imp, (tile_width, tile_width))
@@ -53,7 +53,7 @@ def display_map(world):
     capitol_small_imp = pygame.transform.scale(capitol_imp, (tile_width, tile_width)).convert_alpha()
     artic_capitol_small_imp = pygame.transform.scale(artic_capitol_imp, (tile_width, tile_width)).convert_alpha()
 
-    border = int((screen_width / 96))
+    border = int((screen_width / 300))
 
     for y in range(world.height):
         for x in range(world.width):
