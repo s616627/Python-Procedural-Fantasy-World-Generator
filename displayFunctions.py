@@ -92,19 +92,19 @@ def display_map(world):
                         scrn.blit(capitol_small_imp, (x * tile_width + border, y * tile_width + border))
 
     directions = my_font.render("Press Any Key to Quit", True, (0, 0, 0))
-    scrn.blit(directions, ((world.width) * tile_width + border + 500, border))
+    scrn.blit(directions, (world.width * tile_width + border + 500, border))
 
     for x in range(len(world.city_names_list) - 1):
         city_name = my_font.render(f"{world.city_names_list[x]}: Capital of the {world.fantasy_races[x].plural_name}",
                                    True, (0, 0, 0))
-        scrn.blit(city_name, ((world.width) * tile_width + border + 10, border + x * font_size))
+        scrn.blit(city_name, (world.width * tile_width + border + 10, border + x * font_size))
 
     for x in range(len(world.gods) - 1):
         god_name = my_font.render(
             f"{world.gods[x].name}: Lord of {world.gods[x].god_spheres[0][0]}, {world.gods[x].god_spheres[1][0]} and {world.gods[x].god_spheres[2][0]}",
             True, (0, 0, 0))
         scrn.blit(god_name, (
-        (world.width) * tile_width + border + 10, (border + x * font_size) + (font_size) * len(world.city_names_list)))
+            (world.width) * tile_width + border + 10, (border + x * font_size) + font_size * len(world.city_names_list)))
 
     pygame.display.flip()
 
@@ -119,12 +119,12 @@ def display_map(world):
             if i.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-                status = False
+                #status = False
 
             if i.type == pygame.KEYDOWN:
                 pygame.quit()
                 sys.exit()
-                status = False
+                #status = False
 
 
         pygame.display.flip()
