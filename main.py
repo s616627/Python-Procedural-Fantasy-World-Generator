@@ -5,7 +5,7 @@ import pygame
 play = False
 rules = False
 
-world = WorldGenerator.World(250,250)
+world = WorldGenerator.World(170,170)
 
 world.printRegions()
 pygame.init()
