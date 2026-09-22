@@ -85,7 +85,7 @@ class World:
             self.biome_map.append(biome_array)
             biome_array = []
 
-        for l in range(5):
+        for l in range(3):
             self.smoothNumberArray(self.elevation_map)
 
         for m in range(5):
@@ -202,7 +202,7 @@ class World:
                                 self.biome_map[y][x] = "Artic Sea"
                             case _:
                                 self.biome_map[y][x] = "Sea"
-                    case elevation if (elevation>7):
+                    case elevation if (elevation>6):
                         match temperature:
                             case temperature if (temperature < 3):
                                 self.biome_map[y][x] = "Artic Mountains"
