@@ -12,40 +12,31 @@ class Item:
         self.attributes = attributes
         self.description = description
 
-    def printName(self):
+    def print_name(self):
         print(self.name)
 
 
 class Weapon(Item):
-    def __init__(self,price,weight, atkMltp, defMltp, name,attributes,handleAttributes,description):
+    def __init__(self,price,weight, atk_multp, def_multp, name,attributes,handle_attributes,description):
 
         super().__init__(price,weight,name,attributes,description)
 
         #int
-        self.atkMltp = atkMltp
-        self.defMltp = defMltp
+        self.atk_multp = atk_multp
+        self.def_multp = def_multp
 
         # string list
-        self.handleAttributes = handleAttributes
-
-    def printName(self):
-        super().printName()
+        self.handle_attributes = handle_attributes
 
 class Book(Item):
     def __init__(self,price,weight,name,attributes,coverAttributes,writing,description):
 
         super().__init__(price,weight,name,attributes,description)
 
-        #int
-
-        #string
-
         # string list
         self.coverAttributes = coverAttributes
         self.writing = writing
 
-    def printName(self):
-        super().printName()
 
 class Food(Item):
     def __init__(self,price,fullness,weight,name,attributes,description):
@@ -55,13 +46,6 @@ class Food(Item):
         #int
         self.fullness = fullness
 
-        #string
-
-        # string list
-
-    def printName(self):
-        super().printName()
-
 
 class Potion(Item):
     def __init__(self, price, fullness, weight, name, attributes, effects, description):
@@ -70,11 +54,19 @@ class Potion(Item):
         # int
         self.fullness = fullness
 
-        # string
-
         # string list
         self.effects = effects
 
-    def printName(self):
-        super().printName()
+
+class Armor(Item):
+    def __init__(self,price,weight,def_multp,name,attributes,description,body_part):
+
+        super().__init__(price,weight,name,attributes,description)
+
+        #int
+        self.def_multp = def_multp
+
+        #string
+        self.body_part = body_part
+
 
