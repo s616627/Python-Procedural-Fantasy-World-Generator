@@ -30,7 +30,7 @@ class Location:
         self.symbol = "Ruins"
 
 class Town(Location):
-    def __init__(self,name,color,symbol,buildings,x_coord,y_coord,culture,race,civ,pop):
+    def __init__(self,name,color,symbol,buildings,x_coord,y_coord,culture,race,civ,population):
         super().__init__(name,color,symbol,buildings,x_coord,y_coord)
 
         #other
@@ -42,63 +42,51 @@ class Town(Location):
         self.symbol = symbol
 
         #int
-        self.pop = pop
         self.x_coord = x_coord
         self.y_coord = y_coord
 
-        if (pop == 1):
-            self.caste_pops = {"Peasants": 1}
-            self.caste_race = {"Peasants": race}
+        #pop array
+        self.pops = []
+
+        if population == 1:
+            self.pops.append(Pop(self.race,"Peasant","Peasant"))
         else:
-            self.caste_pops = {"Nobles": 1, "Peasants": (pop - 1)}
-            self.caste_race = {"Nobles": race, "Peasants": race}
+            self.pops.append(Pop(self.race,"Nobles","Nobles"))
+
+            for i in range(population-1):
+                self.pops.append(Pop(self.race,"Peasant","Peasant"))
 
 
+    def return_population(self):
+        return len(self.pops)
+
+    def add_pops(self, race, name, category,amount=1):
+        for i in range(amount):
+            self.pops.append(Pop(race, name, category))
 
 
-    def pop_change(self,new_pop=1):
-        self.pop += new_pop
+    def remove_pop(self, name, amount=1):
 
-    def return_pop(self):
-        pop_sum = 0
-        for pop in self.caste_pops.values():
-            pop_sum = pop_sum + pop
+        for i in range(amount):
+            for j in range(len(self.pops)):
+                self.pops.pop()
+                break
 
-        return pop_sum
+    def change_caste(self, old_pop_name, new_pop, amount = 1):
 
-    def add_caste(self, caste_name, new_caste_race, new_caste_pop = 1):
-        self.caste_pops[caste_name] = new_caste_pop + self.caste_pops[caste_name]
-        self.caste_race[caste_name] = new_caste_race
+        for i in range(amount):
+            for j in range(len(self.pops)):
 
+                if self.pops[j].name == old_pop_name:
+                    self.pops[j] = new_pop
 
-    def remove_caste(self, caste_name, new_caste_pop = 1):
-
-        new_caste_population = new_caste_pop
-
-        if self.caste_pops[caste_name] < new_caste_population:
-            new_caste_population = self.caste_pops[caste_name]
-
-        if self.caste_pops[caste_name] != 0:
-            self.caste_pops[caste_name] =  self.caste_pops[caste_name] - new_caste_population
-
-    def change_caste(self, new_caste, new_caste_race, old_caste, new_caste_pop = 1):
-
-        new_caste_population = new_caste_pop
-
-        if self.caste_pops[old_caste] < new_caste_population:
-            new_caste_population = self.caste_pops[old_caste]
-
-        if self.caste_pops[old_caste] != 0:
-            self.add_caste(new_caste,new_caste_race,new_caste_population)
-            self.caste_pops[old_caste] = self.caste_pops[old_caste] - new_caste_population
+                break
 
 
 
     def destroy(self):
         self.name = self.name + " Ruins"
-        self.pop = 0
-        self.caste_pops = {}
-        self.caste_race = {}
+        self.pops = []
         self.symbol = "City Ruins"
         self.buildings = []
 
@@ -123,3 +111,12 @@ class Civ:
         #culture
         self.culture = culture
 
+class Pop:
+    def __init__(self, race, name, category):
+
+        #Race
+        self.race = race
+
+        #string
+        self.name = name
+        self.category = category
