@@ -24,8 +24,6 @@ class World:
         self.biome_map = []
 
         #2d bool array for what tiles have rivers
-
-
         self.rivers = np.full(shape,False)
 
         #this is used to divide world into regions based on biomes and naming them after
@@ -122,7 +120,6 @@ class World:
                 print(x.name, end=",")
             print("")
 
-
     def smoothNumberArray(self,map):
         for y in range(self.height):
             for x in range(self.width):
@@ -162,13 +159,11 @@ class World:
             for y in range(len(self.gods[x].god_spheres)):
                 print(f"{y+1}. {self.gods[x].god_spheres[y][0]}")
 
-
-
     def printPoliticalMap(self):
         for y in range(self.height):
             for x in range(self.width):
 
-                if self.location_map[y][x].char == "C.":
+                if self.location_map[y][x].symbol == "C.":
                     print("C.")
                 else:
                     print(". ",end="")
@@ -232,11 +227,6 @@ class World:
                                         self.biome_map[y][x] = "Forest"
                                     case _:
                                         self.biome_map[y][x] = "Plains"
-
-
-
-
-
 
     def createRiverFlow(self):
         for x in range (self.width):
@@ -360,15 +350,19 @@ class World:
 
         roman_city_names = readFromFile("nameFiles/romanCities.txt")
         hindu_city_names = readFromFile("nameFiles/hinduCities.txt")
-        city_names = roman_city_names + hindu_city_names
+        arab_city_names = readFromFile("nameFiles/arabCities.txt")
+        central_asian_city_names = readFromFile("nameFiles/centralAsianCities.txt")
+        dwarf_city_names = readFromFile("nameFiles/dwarfCities.txt")
+        georgian_city_names = readFromFile("nameFiles/georgianCities.txt")
+        iranian_city_names = readFromFile("nameFiles/iranianAfganCities.txt")
+
+        city_names = roman_city_names + hindu_city_names + arab_city_names + central_asian_city_names + dwarf_city_names + georgian_city_names + iranian_city_names
         city_name_generator = markovNameGenerator.MarkovName(city_names, 3)
 
         colors = ["RED","GREEN","YELLOW","BLUE","MAGENTA","CYAN","WHITE",
                "GREY","PINK","LIGHTGREEN","LIGHTBLUE","PURPLE","TURQUOISE","ORANGE","BROWN"]
 
         race_number = len(self.fantasy_races)
-
-
 
         civ_colors = random.sample(colors,race_number)
 
@@ -411,17 +405,21 @@ class World:
         godSpheres = readFromFileAdvanced("charicteristicFiles/godspheres.txt")
         personalityTraitsGods = readFromFileAdvanced("charicteristicFiles/personalityTraitsGods.txt")
 
-        romangods = readFromFile("nameFiles/romanGods.txt")
-        hindugods = readFromFile("nameFiles/hinduGods.txt")
+        roman_gods = readFromFile("nameFiles/romanGods.txt")
+        hindu_gods = readFromFile("nameFiles/hinduGods.txt")
+        arab_gods = readFromFile("nameFiles/arabPaganGods.txt")
+        egypt_gods = readFromFile("nameFiles/egyptianGods.txt")
 
-        romangoddesses = readFromFile("nameFiles/romanGoddesses.txt")
-        hindugoddesses = readFromFile("nameFiles/hinduGoddess.txt")
+        roman_goddesses = readFromFile("nameFiles/romanGoddesses.txt")
+        hindu_goddesses = readFromFile("nameFiles/hinduGoddess.txt")
+        arab_goddesses = readFromFile("nameFiles/arabPaganGoddesses.txt")
+        egypt_goddesses = readFromFile("nameFiles/egyptianGoddesses.txt")
 
-        godnames = romangods + hindugods
+        godnames = roman_gods + hindu_gods + arab_gods + egypt_gods + roman_goddesses + hindu_goddesses + arab_goddesses + egypt_goddesses
 
-        godGenerator = markovNameGenerator.MarkovName(godnames, 3)
+        god_name_generator = markovNameGenerator.MarkovName(godnames, 3)
 
-        goddessGenerator = markovNameGenerator.MarkovName(godnames, 3)
+        goddess_name_generator = markovNameGenerator.MarkovName(godnames, 3)
 
         god_number = len(self.fantasy_races)*2
         if god_number < 4:
@@ -430,10 +428,10 @@ class World:
         gods = []
 
         for x in range(int(god_number/2)):
-            gods.append(Gods.Deity(godGenerator.New(10), godSpheres, personalityTraitsGods, physicalTraits, []))
+            gods.append(Gods.Deity(god_name_generator.New(10), godSpheres, personalityTraitsGods, physicalTraits, []))
 
         for y in range(int(god_number/2)):
-            gods.append(Gods.Deity(goddessGenerator.New(10), godSpheres, personalityTraitsGods, physicalTraits, []))
+            gods.append(Gods.Deity(goddess_name_generator.New(10), godSpheres, personalityTraitsGods, physicalTraits, []))
 
 
         return gods
