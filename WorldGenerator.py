@@ -440,17 +440,9 @@ class World:
 
     def party_settlement(self,party,city_name,color,symbol,race,civ,population):
 
-        pops = []
+        pops = party.pops
 
-        for i in range(population-1):
-            pops.append(Civ.Pop(race,"Peasants","Peasants"))
-
-        if population == 1:
-            pops.append(Civ.Pop(race, "Peasants", "Peasants"))
-        else:
-            pops.append(Civ.Pop(race, "Nobles", "Nobles"))
-
-        self.location_map[party.yCoord][party.xCoord] = Civ.Town(city_name,color,symbol,[],party.xCoord,party.yCoord,[],race,civ,pops)
+        self.location_map[party.y_coord][party.x_coord] = Civ.Town(city_name,color,symbol,[],party.x_coord,party.y_coord,[],race,civ,pops)
 
 
 class Party:

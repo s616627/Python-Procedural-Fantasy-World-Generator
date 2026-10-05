@@ -48,37 +48,6 @@ class Town(Location):
 
         #pop array
         self.pops = pops
-    """
-    @classmethod
-    def from_pop_number(cls,name,color,symbol,buildings,x_coord,y_coord,culture,race,civ,population:int):
-        super().__init__(name,color,symbol,buildings,x_coord,y_coord)
-
-        # other
-        culture = culture
-        self.race = race
-        self.civ = civ
-
-        # string
-        cls.symbol = symbol
-
-        # int
-        self.x_coord = x_coord
-        self.y_coord = y_coord
-
-        #pop array
-        pops = []
-
-        if population == 1:
-            pops.append(Pop(race,"Peasant","Peasant"))
-        else:
-            pops.append(Pop(race,"Nobles","Nobles"))
-
-            for i in range(population-1):
-                pops.append(Pop(race,"Peasant","Peasant"))
-
-
-        return cls(pops)
-    """
 
     def return_population(self):
         return len(self.pops)
@@ -107,8 +76,6 @@ class Town(Location):
                     self.pops[j] = new_pop
 
                 break
-
-
 
     def destroy(self):
         self.name = self.name + " Ruins"
