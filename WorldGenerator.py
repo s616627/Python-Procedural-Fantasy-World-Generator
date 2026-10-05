@@ -23,6 +23,8 @@ class World:
         self.humidity_map = []
         self.biome_map = []
 
+        self.parties = []
+
         #2d bool array for what tiles have rivers
         self.rivers = np.full(shape,False)
 
@@ -435,3 +437,32 @@ class World:
 
 
         return gods
+
+    def party_settlement(self,party,city_name,color,symbol,race,civ,population):
+
+        pops = []
+
+        for i in range(population-1):
+            pops.append(Civ.Pop(race,"Peasants","Peasants"))
+
+        if population == 1:
+            pops.append(Civ.Pop(race, "Peasants", "Peasants"))
+        else:
+            pops.append(Civ.Pop(race, "Nobles", "Nobles"))
+
+        self.location_map[party.yCoord][party.xCoord] = Civ.Town(city_name,color,symbol,[],party.xCoord,party.yCoord,[],race,civ,pops)
+
+
+class Party:
+    def __init__(self,pops,x_coord,y_coord):
+
+        #int
+        self.x_coord = x_coord
+        self.y_coord = y_coord
+
+        #array of pops
+        self.pops = pops
+
+    def move(self,new_x_coord=0,new_y_coord=0):
+        self.x_coord += new_x_coord
+        self.y_coord += new_y_coord

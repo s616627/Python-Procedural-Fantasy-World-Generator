@@ -10,7 +10,7 @@ def display_map(world):
     screen_width = deviceInfo.current_w
     screen_height = deviceInfo.current_h
 
-    font_size = int((15 / 1920) * screen_width)
+    font_size = int((20 / 1920) * screen_width)
 
     my_font = pygame.font.SysFont('Merriweather', font_size)
 

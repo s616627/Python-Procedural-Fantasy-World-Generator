@@ -30,7 +30,8 @@ class Location:
         self.symbol = "Ruins"
 
 class Town(Location):
-    def __init__(self,name,color,symbol,buildings,x_coord,y_coord,culture,race,civ,population):
+
+    def __init__(self,name,color,symbol,buildings,x_coord,y_coord,culture,race,civ,pops:[]):
         super().__init__(name,color,symbol,buildings,x_coord,y_coord)
 
         #other
@@ -46,16 +47,38 @@ class Town(Location):
         self.y_coord = y_coord
 
         #pop array
-        self.pops = []
+        self.pops = pops
+    """
+    @classmethod
+    def from_pop_number(cls,name,color,symbol,buildings,x_coord,y_coord,culture,race,civ,population:int):
+        super().__init__(name,color,symbol,buildings,x_coord,y_coord)
+
+        # other
+        culture = culture
+        self.race = race
+        self.civ = civ
+
+        # string
+        cls.symbol = symbol
+
+        # int
+        self.x_coord = x_coord
+        self.y_coord = y_coord
+
+        #pop array
+        pops = []
 
         if population == 1:
-            self.pops.append(Pop(self.race,"Peasant","Peasant"))
+            pops.append(Pop(race,"Peasant","Peasant"))
         else:
-            self.pops.append(Pop(self.race,"Nobles","Nobles"))
+            pops.append(Pop(race,"Nobles","Nobles"))
 
             for i in range(population-1):
-                self.pops.append(Pop(self.race,"Peasant","Peasant"))
+                pops.append(Pop(race,"Peasant","Peasant"))
 
+
+        return cls(pops)
+    """
 
     def return_population(self):
         return len(self.pops)
@@ -69,8 +92,11 @@ class Town(Location):
 
         for i in range(amount):
             for j in range(len(self.pops)):
-                self.pops.pop()
-                break
+
+                if self.pops[j].name == name:
+
+                    self.pops.pop()
+                    break
 
     def change_caste(self, old_pop_name, new_pop, amount = 1):
 
