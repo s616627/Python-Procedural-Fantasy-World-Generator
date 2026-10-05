@@ -7,7 +7,7 @@ rules = False
 
 world = WorldGenerator.World(170,170)
 
-world.printRegions()
+#world.printRegions()
 pygame.init()
 CLOCK = pygame.time.Clock()
 running = True
