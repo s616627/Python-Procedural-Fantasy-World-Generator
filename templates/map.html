@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <title>World Map</title>
   <style>
+
+    body{
+      background-color: lightblue;
+    }
+
   .map {
     display: grid;
     grid-template-columns: repeat({{ width }}, {{ tile }}px);
@@ -16,19 +21,11 @@
     image-rendering: pixelated;   /* keeps pixel art crisp; remove for smooth art */
   }
 
-    .p{
-        font-family: "Times New Roman", Times, sans-serif;
-
-    }
-
-    .h3{
-
-      column-count: 3;
-
-    }
 </style>
 </head>
 <body>
+
+
 
 <div class="map">
   {% for row in tiles %}
@@ -45,8 +42,11 @@
 
 
   <h3>Cities</h3>
-  <p>{{ cities | join(", ") }}</p>
-  <h3>Races</h3>
-  <p>{{ races | join(", ") }}</p>
+  <div class="capitols">
+  {% for city, race in capitols %}
+    <div>{{ city }}: Capitol of the {{ race }}</div>
+  {% endfor %}
+  </div>
+
 </body>
 </html>

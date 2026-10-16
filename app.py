@@ -46,13 +46,14 @@ def index():
     random.seed(seed)          # same seed -> same world
     world = World(width, height)
 
+    capitols = [(c, r.plural_name) for c, r in zip(world.city_names_list, world.fantasy_races)]
+
     return render_template(
         "map.html",
         tiles=build_tiles(world),
         width=width, height=height, seed=seed,
         tile=TILE_SIZE,
-        cities=world.city_names_list,
-        races=world.race_name_list
+        capitols=capitols,
     )
 
 if __name__ == "__main__":
