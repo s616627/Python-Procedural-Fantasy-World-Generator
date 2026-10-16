@@ -1,5 +1,4 @@
 import random
-import curses
 
 #take contents from text file and put it in a list
 def readFromFile(fileName):
