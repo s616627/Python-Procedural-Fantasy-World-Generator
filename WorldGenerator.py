@@ -33,6 +33,7 @@ class World:
         self.region_names = [[0 for _ in range(width)] for _ in range(height)]
 
         self.city_names_list = []
+        self.race_name_list = []
 
         self.region_dict = {
 
@@ -85,7 +86,7 @@ class World:
             self.biome_map.append(biome_array)
             biome_array = []
 
-        for l in range(3):
+        for l in range(4):
             self.smoothNumberArray(self.elevation_map)
 
         for m in range(5):
@@ -94,8 +95,12 @@ class World:
 
         self.setBiomeMap()
 
+
         for z in range(100):
+            """
             self.createRiverFlow()
+            """
+
 
         self.settleRaces()
 
@@ -193,20 +198,20 @@ class World:
                 #     --> humidity
 
                 match elevation:
-                    case elevation if (elevation<5):
+                    case elevation if (elevation<6):
                         match temperature:
                             case temperature if (temperature<3):
                                 self.biome_map[y][x] = "Artic Sea"
                             case _:
                                 self.biome_map[y][x] = "Sea"
-                    case elevation if (elevation>6):
+                    case elevation if (elevation>7):
                         match temperature:
                             case temperature if (temperature < 3):
                                 self.biome_map[y][x] = "Artic Mountains"
                             case temperature if (temperature > 2):
                                 match humidity:
                                     case humidity if (humidity > 7):
-                                        self.biome_map[y][x] = "River"
+                                        self.biome_map[y][x] = "Mountains"
                                     case _:
                                         self.biome_map[y][x] = "Mountains"
                     case _:
@@ -345,6 +350,7 @@ class World:
                 new_race.plural_name = random_culture + " " + new_race.plural_name
 
             final_world_races.append(new_race)
+            self.race_name_list.append(new_race.plural_name)
 
         return final_world_races
 

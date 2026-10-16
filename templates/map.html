@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>World Map</title>
+  <style>
+  .map {
+    display: grid;
+    grid-template-columns: repeat({{ width }}, {{ tile }}px);
+    grid-auto-rows: {{ tile }}px;
+    width: max-content;
+    border: 2px solid #333;
+  }
+  .tile {
+    background-size: 100% 100%;
+    image-rendering: pixelated;   /* keeps pixel art crisp; remove for smooth art */
+  }
+
+    .p{
+        font-family: "Times New Roman", Times, sans-serif;
+
+    }
+
+    .h3{
+
+      column-count: 3;
+
+    }
+</style>
+</head>
+<body>
+
+<div class="map">
+  {% for row in tiles %}
+    {% for t in row %}
+      <div class="tile" style="background-image: {{ t.bg }}" title="{{ t.title }}"></div>
+    {% endfor %}
+  {% endfor %}
+</div>
+
+  <h1>World (seed {{ seed }})</h1>
+  <p><a href="/">New random world</a> |
+     <a href="/?w={{ width }}&h={{ height }}&seed={{ seed }}">Reload this one</a></p>
+
+
+
+  <h3>Cities</h3>
+  <p>{{ cities | join(", ") }}</p>
+  <h3>Races</h3>
+  <p>{{ races | join(", ") }}</p>
+</body>
+</html>
