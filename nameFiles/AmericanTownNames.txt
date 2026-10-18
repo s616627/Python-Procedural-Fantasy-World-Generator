@@ -1,26 +1,26 @@
-Clearton
-Breckendelphia
-Wolf Rock
-Justicegraves
-Northville
-South Town
-West Falls
-East Cove
-Stamboro
-Clyde Springs
-Marypool
-Johnwater
-Jamesburg
-Sterling
-Mcopolis
-Rockbury
-Buffalo City
-Nashfield
-Little Wells
-Scottsland
-Blueridge
-Blairs Ridge
-Clarksport
-Northwood
-Southlake
-Northford
+clearton
+breckendelphia
+wolf rock
+justicegraves
+northville
+south town
+west falls
+east cove
+stamboro
+clyde springs
+marypool
+johnwater
+jamesburg
+sterling
+mcopolis
+rockbury
+buffalo city
+nashfield
+little wells
+scottsland
+blueridge
+blairs ridge
+clarksport
+northwood
+southlake
+northford
