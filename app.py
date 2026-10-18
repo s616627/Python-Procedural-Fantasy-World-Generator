@@ -1,6 +1,6 @@
 import os
 import random
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, redirect
 
 from WorldGenerator import World
 
@@ -39,11 +39,16 @@ def build_tiles(world):
 
 @app.route("/")
 def index():
+
+    seed = int(request.args.get("seed", random.randint(0, 999999)))
+    return redirect(url_for("create_from_set_seed", url_seed=seed))
+
+@app.route("/<url_seed>")
+def create_from_set_seed(url_seed):
     width = int(request.args.get("w", 170))
     height = int(request.args.get("h", 80))
-    seed = int(request.args.get("seed", random.randint(0, 999999)))
 
-    random.seed(seed)          # same seed -> same world
+    random.seed(url_seed)          # same seed -> same world
     world = World(width, height)
 
     capitols = [(c, r.plural_name) for c, r in zip(world.city_names_list, world.fantasy_races)]
@@ -51,7 +56,7 @@ def index():
     return render_template(
         "map.html",
         tiles=build_tiles(world),
-        width=width, height=height, seed=seed,
+        width=width, height=height, seed=url_seed,
         tile=TILE_SIZE,
         capitols=capitols,
     )
