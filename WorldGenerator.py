@@ -35,21 +35,6 @@ class World:
         self.city_names_list = []
         self.race_name_list = []
 
-        self.region_dict = {
-
-            'Plains':'OoO',
-            'Forest':'###',
-            'Taiga':'‡‡‡',
-            'Desert':'≈≈≈',
-            'Sea':' ~ ',
-            'Artic Sea':' ~ ',
-            'Mountains':'A^A',
-            'Artic Mountains':'^A^',
-            'Artic':' - ',
-            'Rainforest':'TTT',
-            'Savannah':'Y*Y',
-            'River':'A)A'
-        }
 
         self.fantasy_races = self.createRaces()
         self.gods = self.createGods()
@@ -178,8 +163,6 @@ class World:
 
     def setBiomeMap(self):
 
-        #init(autoreset=True)
-
         elevation = -100
         temperature = -100
         humidity = -100
@@ -235,67 +218,6 @@ class World:
                                     case _:
                                         self.biome_map[y][x] = "Plains"
 
-    def createRiverFlow(self):
-        for x in range (self.width):
-            for y in range (self.height):
-                elevation = self.elevation_map[y][x]
-
-                if (x != self.width - 1):
-                    if (self.elevation_map[y][x + 1] < elevation):
-                        if(self.biome_map[y][x+1] != "River"):
-                            self.rivers[y][x + 1] = True
-
-                if (y != self.height - 1):
-                    if (self.elevation_map[y + 1][x] < elevation):
-                        self.rivers[y+1][x] = True
-
-                if (x != self.width - 1 and y != self.height - 1):
-                    if (self.elevation_map[y + 1][x + 1] < elevation):
-                        self.rivers[y+1][x + 1] = True
-
-                if (x != 0):
-                    if (self.elevation_map[y][x - 1] < elevation):
-                        self.rivers[y][x - 1] = True
-
-                if (y != 0):
-                    if (self.elevation_map[y - 1][x] < elevation):
-                        self.rivers[y-1][x] = True
-
-                if (y != 0 and x != 0):
-                    if (self.elevation_map[y - 1][x - 1] < elevation):
-                        self.rivers[y - 1][x - 1] = True
-
-                if (x != 0 and y != self.height - 1):
-                    if (self.elevation_map[y + 1][x - 1] < elevation):
-                        self.rivers[y+1][x - 1] = True
-
-                if (x != self.width - 1 and y != 0):
-                    if (self.elevation_map[y - 1][x + 1] < elevation):
-                        self.rivers[y-1][x + 1] = True
-
-                if (x == self.width - 1):
-                    if (self.elevation_map[y][0] < elevation):
-                        self.rivers[y][0] = True
-
-                        if (y!=0):
-                            if (self.elevation_map[y-1][0] < elevation):
-                                self.rivers[y-1][0] = True
-
-                        if (y!=self.height-1):
-                            if (self.elevation_map[y+1][0] < elevation):
-                                self.rivers[y+1][0] = True
-
-                if (x == 0):
-                    if (self.elevation_map[y][self.width-1] < elevation):
-                        self.rivers[y][self.width-1] = True
-
-                        if (y != 0):
-                            if (self.elevation_map[y - 1][self.width-1] < elevation):
-                                self.rivers[y - 1][self.width-1] = True
-
-                        if (y != self.height - 1):
-                            if (self.elevation_map[y + 1][self.width-1] < elevation):
-                                self.rivers[y + 1][self.width-1] = True
 
     def createRaces(self):
         races = readFromFile("CreaturesAndRaces/fantasyRaces.txt")
