@@ -20,7 +20,7 @@
   {"name" : "Dyes", "category": "Plant Luxury","tech": "Irrigation", "biomes" : [["Forest",10],["Rainforest",10]]},
   {"name" : "Furs", "category": "Craft Luxury","tech": "Animal Husbandry", "biomes" : [["Forest",10],["Taiga",10],["Artic",10]]},
   {"name" : "Gypsum", "category": "Craft Luxury","tech": "Mining", "biomes" : [["Plains",10],["Mountains",5]]},
-  {"name" : "Honey","category": "Insect Food Luxury", "tech": "Animal Husbandry", "biomes" : [["Plains",10]]},
+  {"name" : "Honey","category": "Food Luxury", "tech": "Animal Husbandry", "biomes" : [["Plains",10]]},
   {"name" : "Incense","category": "Plant Luxury","tech": "Irrigation", "biomes" : [["Plains",10],["Desert",10]]},
   {"name" : "Ivory", "category": "Craft Luxury","tech": "Animal Husbandry", "biomes" : [["Plains",5],["Rainforest",5],["Desert",5],["Forest",5]]},
   {"name" : "Jade", "category": "Craft Luxury","tech": "Mining", "biomes" : [["Plains",10],["Taiga",10]]},
