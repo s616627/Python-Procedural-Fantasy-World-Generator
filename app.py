@@ -59,6 +59,7 @@ def create_from_set_seed(url_seed):
         width=width, height=height, seed=url_seed,
         tile=TILE_SIZE,
         capitols=capitols,
+        resources= world.resource_map
     )
 
 if __name__ == "__main__":

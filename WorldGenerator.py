@@ -8,10 +8,14 @@ from stringListFunctions import readFromFile, readFromFileAdvanced
 import Civ
 import markovNameGenerator
 import Gods
+import json
+import resource
 
 
 class World:
     def __init__(self, width, height):
+
+        self.resources = resource.load_resources("JSONfiles/resources.json")
 
         self.width = width
         self.height = height
@@ -22,6 +26,7 @@ class World:
         self.temperature_map = []
         self.humidity_map = []
         self.biome_map = []
+        self.resource_map = []
 
         self.parties = []
 
@@ -47,6 +52,7 @@ class World:
         temperature_array = []
         humidity_array = []
         biome_array = []
+        resource_array = []
 
         for i in range(height):
 
@@ -54,6 +60,8 @@ class World:
                 elevation_array.append(random.randint(0,10))
                 humidity_array.append(random.randint(0,10))
                 biome_array.append("???")
+
+                resource_array.append([[]])
 
                 if i == 0 or i == height - 1:
                     temperature_array.append(-10)
@@ -70,6 +78,8 @@ class World:
             humidity_array = []
             self.biome_map.append(biome_array)
             biome_array = []
+            self.resource_map.append(resource_array)
+            resource_array = []
 
         for l in range(4):
             self.smoothNumberArray(self.elevation_map)
@@ -217,6 +227,29 @@ class World:
                                         self.biome_map[y][x] = "Forest"
                                     case _:
                                         self.biome_map[y][x] = "Plains"
+
+
+    def setResources(self):
+
+        resource_biomes_list = []
+
+        random_number = -100
+
+        for y in range(self.height):
+            for x in range(self.width):
+
+                for resource in self.resources:
+                    resource_biomes_list = resource.biomes
+
+                    for biome in resource_biomes_list:
+                        random_number = random.randint(0, 100)
+
+                        #if the spawn chance for this biome is less than or equal to the random number
+                        if biome[1] <= random_number:
+                            self.resource_map[y][x].append(resource.name)
+
+
+
 
 
     def createRaces(self):
