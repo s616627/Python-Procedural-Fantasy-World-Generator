@@ -395,17 +395,18 @@ class World:
 
         return gods
 
-    def createSettlers(self,town,caste):
+    def createSettlers(self,town,caste="Peasants"):
 
-
+        settlers = None
 
         for x in range(len(town.pops)):
             if town.pops[x].category == caste:
-                settlers = Party(caste + " Settlers (" + town.civ + ")",[town.pops[x]],town.x_coord,town.y_coord)
+                settlers = Party(caste + " Settler Party (" + town.civ + ")",[town.pops[x]],town.x_coord,town.y_coord)
                 town.pops.pop(x)
                 break
 
-        self.parties.append(settlers)
+        if settlers != None:
+            self.parties.append(settlers)
 
 
 

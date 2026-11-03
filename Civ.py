@@ -31,7 +31,7 @@ class Location:
 
 class Town(Location):
 
-    def __init__(self,name,color,symbol,buildings,x_coord,y_coord,culture,race,civ,pops:[]):
+    def __init__(self,name,color,symbol,buildings,x_coord,y_coord,culture,race,civ,population):
         super().__init__(name,color,symbol,buildings,x_coord,y_coord)
 
         #other
@@ -47,7 +47,22 @@ class Town(Location):
         self.y_coord = y_coord
 
         #pop array
-        self.pops = pops
+        self.pops = []
+
+        if isinstance(population,int):
+
+            for i in range(population - 1):
+                self.pops.append(Pop(race, "Peasants", "Peasants"))
+
+            if population == 1:
+                self.pops.append(Pop(race, "Peasants", "Peasants"))
+            else:
+                self.pops.append(Pop(race, "Nobles", "Nobles"))
+
+        else:
+            self.pops = population
+
+
 
     def return_population(self):
         return len(self.pops)
