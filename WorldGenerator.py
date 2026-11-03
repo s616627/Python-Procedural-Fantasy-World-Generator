@@ -27,6 +27,7 @@ class World:
         self.humidity_map = []
         self.biome_map = []
         self.resource_map = []
+        self.coord_map = []
 
         self.parties = []
 
@@ -228,7 +229,6 @@ class World:
                                     case _:
                                         self.biome_map[y][x] = "Plains"
 
-
     def setResources(self):
 
         resource_biomes_list = []
@@ -247,10 +247,6 @@ class World:
                         #if the spawn chance for this biome is less than or equal to the random number
                         if biome[1] <= random_number:
                             self.resource_map[y][x].append(resource.name)
-
-
-
-
 
     def createRaces(self):
         races = readFromFile("CreaturesAndRaces/fantasyRaces.txt")
@@ -399,6 +395,20 @@ class World:
 
         return gods
 
+    def createSettlers(self,town,caste):
+
+
+
+        for x in range(len(town.pops)):
+            if town.pops[x].category == caste:
+                settlers = Party(caste + " Settlers (" + town.civ + ")",[town.pops[x]],town.x_coord,town.y_coord)
+                town.pops.pop(x)
+                break
+
+        self.parties.append(settlers)
+
+
+
     def party_settlement(self,party,city_name,color,symbol,race,civ,population):
 
         pops = party.pops
@@ -407,7 +417,7 @@ class World:
 
 
 class Party:
-    def __init__(self,pops,x_coord,y_coord):
+    def __init__(self,name,pops,x_coord,y_coord):
 
         #int
         self.x_coord = x_coord
